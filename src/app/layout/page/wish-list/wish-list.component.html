@@ -1,0 +1,98 @@
+<div class="py-12 min-h-screen">
+    <!-- Desktop View -->
+    <div class="hidden sm:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col justify-start items-start animate-fadeIn">
+            <div class="flex flex-row justify-center items-end space-x-4 mb-12">
+                <h1 class="text-4xl font-bold leading-9 text-[#8B5CF6]">
+                    {{"wishlist.wishlist" | translate}}
+                </h1>
+                <p class="text-base leading-4 text-gray-600 pb-1">({{GetWishListData.length}} 
+                    {{"wishlist.items" | translate}})</p>
+            </div>
+            
+            <div class="w-full  rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+                <table class="w-full">
+                    <thead class="bg-[#8B5CF6] bg-opacity-10">
+                        <tr>
+                            <th class="text-center py-6 px-6 text-base font-medium text-[#8B5CF6]">{{"wishlist.your product" | translate}}</th>
+                            <th class="text-center py-6 px-6 text-base font-medium text-[#8B5CF6]">{{"wishlist.title" | translate}}</th>
+                            <th class="text-center py-6 px-6 text-base font-medium text-[#8B5CF6]">{{"wishlist.price" | translate}}</th>
+                            <th class="text-center py-6 px-6 text-base font-medium text-[#8B5CF6]">{{"wishlist.more options" | translate}}</th>
+                            <th class="py-6 px-6"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        @for (item of GetWishListData; track item.id) {
+                            <tr class="hover:bg-[#8B5CF6] hover:bg-opacity-5 transition-colors duration-200">
+                                <td class="py-6 px-6">
+                                    <div class="flex justify-center">
+                                        <img class="w-24 h-24 object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                                            src="{{item.imageCover}}" alt="shoe" />
+                                    </div>
+                                </td>
+                                <td class="py-6 px-6">
+                                    <p class="text-base font-medium text-gray-800">{{item.title}}</p>
+                                </td>
+                                <td class="py-6 px-6">
+                                    <p class="text-lg font-semibold text-[#8B5CF6]">{{item.price| currency: "EGP"}}</p>
+                                </td>
+                                <td class="py-6 px-6">
+                                    <button [routerLink]="['/Details', item.id]"
+                                        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#8B5CF6] hover:bg-[#7C4DF6] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#8B5CF6] transition-all duration-200 hover:scale-105">
+                                        {{"wishlist.View details" | translate}}
+                                    </button>
+                                </td>
+                                <td class="py-6 px-6">
+                                    <button (click)="removeFromWishList(item.id)"
+                                        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-[#8B5CF6] bg-[#FACC15] hover:bg-[#FADB15] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FACC15] transition-all duration-200 hover:scale-105">
+                                        {{"wishlist.remove item" | translate}}
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile View -->
+    <div class="sm:hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col justify-start items-start animate-fadeIn">
+            <div class="flex flex-row justify-start items-end space-x-4 mb-8">
+                <h1 class="text-3xl font-bold leading-9 text-[#8B5CF6]">
+                    {{"wishlist.wishlist" | translate}}
+                </h1>
+                <p class="text-base leading-4 text-gray-600 pb-1">({{GetWishListData.length}} 
+                    {{"wishlist.items" | translate}})</p>
+            </div>
+
+            <div class="w-full space-y-6">
+                @for (item of GetWishListData; track item.id) {
+                    <div class=" rounded-xl shadow-sm p-6 transition-all duration-300 hover:shadow-md">
+                        <div class="flex flex-col space-y-4">
+                            <div class="flex justify-center">
+                                <img class="w-48 h-48 object-cover rounded-lg transform transition-transform duration-300 hover:scale-110"
+                                    src="{{item.imageCover}}" alt="{{item.title}}" />
+                            </div>
+                            <div class="flex flex-col space-y-2">
+                                <h3 class="text-lg font-semibold text-gray-900">{{item.title}}</h3>
+                                <p class="text-xl font-bold text-[#8B5CF6]">{{item.price | currency : "EGP"}}</p>
+                            </div>
+                            <div class="flex flex-col space-y-3 pt-4">
+                                <button [routerLink]="['/Details', item.id]"
+                                    class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#8B5CF6] hover:bg-[#7C4DF6] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#8B5CF6] transition-all duration-200 hover:scale-105">
+                                    {{"wishlist.View details" | translate}}
+                                </button>
+                                <button (click)="removeFromWishList(item.id)"
+                                    class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-[#8B5CF6] bg-[#FACC15] hover:bg-[#FADB15] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FACC15] transition-all duration-200 hover:scale-105">
+                                    {{"wishlist.remove item" | translate}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

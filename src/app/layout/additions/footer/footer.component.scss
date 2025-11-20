@@ -1,0 +1,28 @@
+@keyframes footerFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.pay-details img:hover {
+    animation: footerFloat 1s ease-in-out infinite;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.3);
+}
+
+.bg-white\/10 {
+    backdrop-filter: blur(8px);
+}
+
+

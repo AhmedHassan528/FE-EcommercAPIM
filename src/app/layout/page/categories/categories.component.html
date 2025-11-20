@@ -1,0 +1,12 @@
+<h1 class="text-5xl font-bold text-[#8B5CF6] text-center mt-4">{{"general.all categories" | translate}}</h1>
+<br>
+<div class="flex justify-center flex-wrap mb-10">
+    @for (item of CategoriesData; track item.id) {
+    <div class="w-1/4 brand m-4 transform hover:scale-105 transition-transform duration-300">
+        <div class="bg-[#FACC15] p-4 rounded-lg shadow-lg">
+            <img class="aspect-square w-96 object-cover rounded-lg" src="{{item.image}}" alt="{{item.name}}">
+        </div>
+        <h1 class="text-2xl font-bold text-[#8B5CF6] text-center my-4">{{item.name}}</h1>
+    </div>
+    }
+</div>

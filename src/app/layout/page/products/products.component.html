@@ -1,0 +1,99 @@
+
+<!--Search-->
+<div class="max-w-md mx-auto">
+    <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+            </svg>
+        </div>
+        <input [(ngModel)]="SearchWords" type="search" id="default-search"
+       class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-green-400 focus:border-green-700"
+       [placeholder]="'general.search products' | translate" required />
+
+    </div>
+</div>
+
+
+
+<!-- products -->
+<section class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+    @for (item of Products | kMPSearch : SearchWords; track item._id) {
+        <div>
+            <div class="relative w-full product-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <!-- Sale/New Tag -->
+                <div class="absolute top-0 left-0 z-10">
+                    @if (item.isNew) {
+                        <span class="bg-orange-500 text-white text-xs px-3 py-1">NEW</span>
+                    }
+                    @if (item.onSale) {
+                        <span class="bg-blue-500 text-white text-xs px-3 py-1">SALE</span>
+                    }
+                </div>
+        
+                <!-- Product Image with Circle Background -->
+                <div class="relative aspect-square overflow-hidden bg-gray-50">
+                    <div class="absolute inset-0 bg-gradient-to-b from-gray-100 to-white rounded-full transform scale-150 -translate-y-1/4"></div>
+                    <img [routerLink]="['/Details', item.id]" 
+                         [src]="item.imageCover" 
+                         [alt]="item.title"
+                         class="relative z-10 w-full h-full object-contain p-6 transition-transform hover:scale-105">
+                    
+                    <!-- Wishlist Button -->
+                    <div class="absolute top-2 right-2 z-20">
+                        @if (WishListIDs?.includes(item.id)) {
+                            <button (click)="removeFromWishList(item.id)" 
+                                    [class.opacity-50]="wishListLoading"
+                                    [disabled]="wishListLoading">
+                                <fa-icon size="lg" [icon]="faHeart" class="text-red-500"></fa-icon>
+                            </button>
+                        } @else {
+                            <button (click)="addToWishList(item.id)"
+                                    [class.opacity-50]="wishListLoading"
+                                    [disabled]="wishListLoading">
+                                <fa-icon size="lg" [icon]="faHeart" class="text-gray-400 hover:text-red-500"></fa-icon>
+                            </button>
+                        }
+                    </div>
+                </div>
+        
+                <!-- Product Info -->
+                <div class="p-4">
+                    <!-- Rating -->
+                    <div class="flex items-center mb-2">
+                        @for (item of [1,2,3,4,5].slice(0, item.ratingsAverage); track $index) {
+                            <fa-icon size="xs" [icon]="faStar" class="text-yellow-400"></fa-icon>
+                        }
+                        @if (item.ratingsAverage % 1 != 0) {
+                            <fa-icon size="xs" [icon]="faStarHalf" class="text-yellow-400"></fa-icon>
+                        }
+                    </div>
+        
+                    <!-- Title -->
+                    <h3 [routerLink]="['/Details', item.id]" 
+                        class="text-sm font-medium text-gray-800 mb-1 hover:text-primary cursor-pointer line-clamp-2">
+                        {{item.title}}
+                    </h3>
+        
+                    <!-- Price and Cart -->
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-gray-900">${{item.price}}</span>
+                        
+                        <!-- Add to Cart -->
+                        <button (click)="addToCart(item.id)"
+                                [disabled]="AddLoading && itemId == item.id"
+                                class="rounded-full p-2 bg-orange-500 text-white hover:bg-orange-600 transition-colors">
+                            @if (AddLoading && itemId == item.id) {
+                                <fa-icon [icon]="faSpinner"></fa-icon>
+                            } @else {
+                                <fa-icon [icon]="faShoppingCart"></fa-icon>
+                            }
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>

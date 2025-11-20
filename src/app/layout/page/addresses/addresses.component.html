@@ -1,0 +1,255 @@
+@if (AllAddress.length === 0) {
+    <section class="min-h-screen flex items-center justify-center p-6">
+        <div class="max-w-4xl w-full flex flex-col md:flex-row items-center gap-8 animate-fade-in">
+            <div class="w-full md:w-1/2 transform hover:scale-105 transition-transform duration-300">
+                <img src="./assets/images/issue.jpg" alt="No Address" class="rounded-lg shadow-xl">
+            </div>
+            <div class="w-full md:w-1/2 space-y-6">
+                <h1 class="text-4xl font-black text-[#8B5CF6] mb-8 animate-slide-up text-center">
+                    {{"address.You didn't Add the Address !!" | translate}}
+                </h1>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 transform hover:shadow-xl transition-shadow duration-300">
+                    <form class="space-y-6" [formGroup]="registerForm" (ngSubmit)="AddressSubmit()">
+                        <div class="space-y-4">
+                            <div class="form-group">
+                                <label for="name" class="block text-sm font-medium text-[#8B5CF6] mb-1">
+                                    {{"address.your name" | translate}}
+                                </label>
+                                <input type="text" name="name" id="name"
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#8B5CF6] focus:border-transparent transition-all duration-300"
+                                    [ngClass]="{'border-red-500': registerForm.get('AddressName')?.invalid && registerForm.get('AddressName')?.touched}"
+                                    required formControlName="AddressName" />
+                                @if (registerForm.get('AddressName')?.invalid && registerForm.get('AddressName')?.touched) {
+                                    <div class="text-red-500 text-sm mt-1">
+                                        @if (registerForm.get('AddressName')?.errors?.['required']) {
+                                            <span>{{"address.validation.name_required" | translate}}</span>
+                                        }
+                                        @if (registerForm.get('AddressName')?.errors?.['minlength']) {
+                                            <span>{{"address.validation.name_min_length" | translate}}</span>
+                                        }
+                                        @if (registerForm.get('AddressName')?.errors?.['pattern']) {
+                                            <span>{{"address.validation.name_pattern" | translate}}</span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-group">
+                                <label for="Details" class="block text-sm font-medium text-gray-700 mb-1">
+                                    {{"address.your details" | translate}}
+                                </label>
+                                <input type="text" name="Details" id="Details"
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
+                                    [ngClass]="{'border-red-500': registerForm.get('Address')?.invalid && registerForm.get('Address')?.touched}"
+                                    required formControlName="Address" />
+                                @if (registerForm.get('Address')?.invalid && registerForm.get('Address')?.touched) {
+                                    <div class="text-red-500 text-sm mt-1">
+                                        @if (registerForm.get('Address')?.errors?.['required']) {
+                                            <span>{{"address.validation.address_required" | translate}}</span>
+                                        }
+                                        @if (registerForm.get('Address')?.errors?.['minlength']) {
+                                            <span>{{"address.validation.address_min_length" | translate}}</span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-group">
+                                <label for="number" class="block text-sm font-medium text-gray-700 mb-1">
+                                    {{"address.your phone number" | translate}}
+                                </label>
+                                <input type="text" name="text" id="text"
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
+                                    [ngClass]="{'border-red-500': registerForm.get('phoneNumber')?.invalid && registerForm.get('phoneNumber')?.touched}"
+                                    required formControlName="phoneNumber"/>
+                                @if (registerForm.get('phoneNumber')?.invalid && registerForm.get('phoneNumber')?.touched) {
+                                    <div class="text-red-500 text-sm mt-1">
+                                        @if (registerForm.get('phoneNumber')?.errors?.['required']) {
+                                            <span>{{"address.validation.phone_required" | translate}}</span>
+                                        }
+                                        @if (registerForm.get('phoneNumber')?.errors?.['pattern']) {
+                                            <span>{{"address.validation.phone_pattern" | translate}}</span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-group">
+                                <label for="city" class="block text-sm font-medium text-gray-700 mb-1">
+                                    {{"address.city" | translate}}
+                                </label>
+                                <input type="text" name="city" id="city"
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
+                                    [ngClass]="{'border-red-500': registerForm.get('City')?.invalid && registerForm.get('City')?.touched}"
+                                    required formControlName="City" />
+                                @if (registerForm.get('City')?.invalid && registerForm.get('City')?.touched) {
+                                    <div class="text-red-500 text-sm mt-1">
+                                        @if (registerForm.get('City')?.errors?.['required']) {
+                                            <span>{{"address.validation.city_required" | translate}}</span>
+                                        }
+                                        @if (registerForm.get('City')?.errors?.['minlength']) {
+                                            <span>{{"address.validation.city_min_length" | translate}}</span>
+                                        }
+                                        @if (registerForm.get('City')?.errors?.['pattern']) {
+                                            <span>{{"address.validation.city_pattern" | translate}}</span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <button type="submit"
+                            [disabled]="registerForm.invalid"
+                            class="w-full bg-[#8B5CF6] text-white py-3 rounded-lg font-medium hover:bg-[#7C4DF6] transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                            {{"address.add address" | translate}}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+} @else {
+    <div class="min-h-screen flex flex-col items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl w-full space-y-8">
+            @for (address of AllAddress; track address.id) {
+                <div class="bg-white rounded-xl shadow-lg p-6 transform hover:shadow-xl transition-all duration-300 animate-fade-in-up">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="space-y-2">
+                            <h1 class="text-xl font-bold text-[#8B5CF6]">{{"address.name" | translate}}: {{address.addressName}}</h1>
+                            <div class="space-y-1 text-gray-600">
+                                <p class="flex items-center gap-2">
+                                    <fa-icon [icon]="faPhone" class="text-[#8B5CF6]"></fa-icon>
+                                    {{"address.phone" | translate}}: {{address.phoneNumber}}
+                                </p>
+                                <p class="flex items-center gap-2">
+                                    <fa-icon [icon]="faCity" class="text-[#8B5CF6]"></fa-icon>
+                                    {{"address.city" | translate}}: {{address.city}}
+                                </p>
+                                <p class="flex items-center gap-2">
+                                    <fa-icon [icon]="faMapMarkerAlt" class="text-[#8B5CF6]"></fa-icon>
+                                    {{"address.details" | translate}}: {{address.address}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            @if (getCartId) {
+                                <button (click)="Onlinecheckout(getCartId, address)" 
+                                    class="bg-[#8B5CF6] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#7C4DF6] transform hover:scale-105 transition-all duration-300">
+                                    {{"address.use this address" | translate}}
+                                </button>
+                            }
+                            <button (click)="DeleteAddress(address.id)" 
+                                class="flex items-center gap-2 text-red-600 hover:text-red-700 transform hover:scale-105 transition-all duration-300">
+                                <fa-icon [icon]="faTrash"></fa-icon>
+                                {{"address.delete" | translate}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (!addingAddress) {
+                <div class="flex justify-center animate-bounce-in">
+                    <button (click)="AddNewAddress()"
+                        class="bg-[#8B5CF6] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#7C4DF6] transform hover:scale-105 transition-all duration-300">
+                        {{"address.add address" | translate}}
+                    </button>
+                </div>
+            } @else {
+                <div class="bg-white rounded-xl shadow-lg p-6 animate-fade-in">
+                    <h1 class="text-3xl font-black text-[#8B5CF6] mb-8 text-center">
+                        {{"address.Add New Address" | translate}}
+                    </h1>
+                    <form class="space-y-6" [formGroup]="registerForm" (ngSubmit)="AddressSubmit()">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label for="name" class="block text-sm font-medium text-[#8B5CF6] mb-1">
+                                    {{"address.your name" | translate}}
+                                </label>
+                                <input type="text" name="name" id="name"
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#8B5CF6] focus:border-transparent transition-all duration-300"
+                                    [ngClass]="{'border-red-500': registerForm.get('AddressName')?.invalid && registerForm.get('AddressName')?.touched}"
+                                    required formControlName="AddressName" />
+                                @if (registerForm.get('AddressName')?.invalid && registerForm.get('AddressName')?.touched) {
+                                    <div class="text-red-500 text-sm mt-1">
+                                        @if (registerForm.get('AddressName')?.errors?.['required']) {
+                                            <span>{{"address.validation.name_required" | translate}}</span>
+                                        }
+                                        @if (registerForm.get('AddressName')?.errors?.['minlength']) {
+                                            <span>{{"address.validation.name_min_length" | translate}}</span>
+                                        }
+                                        @if (registerForm.get('AddressName')?.errors?.['pattern']) {
+                                            <span>{{"address.validation.name_pattern" | translate}}</span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-group">
+                                <label for="Details" class="block text-sm font-medium text-gray-700 mb-1">
+                                    {{"address.your details" | translate}}
+                                </label>
+                                <input type="text" name="Details" id="Details"
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
+                                    [ngClass]="{'border-red-500': registerForm.get('Address')?.invalid && registerForm.get('Address')?.touched}"
+                                    required formControlName="Address" />
+                                @if (registerForm.get('Address')?.invalid && registerForm.get('Address')?.touched) {
+                                    <div class="text-red-500 text-sm mt-1">
+                                        @if (registerForm.get('Address')?.errors?.['required']) {
+                                            <span>{{"address.validation.address_required" | translate}}</span>
+                                        }
+                                        @if (registerForm.get('Address')?.errors?.['minlength']) {
+                                            <span>{{"address.validation.address_min_length" | translate}}</span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-group">
+                                <label for="number" class="block text-sm font-medium text-gray-700 mb-1">
+                                    {{"address.your phone number" | translate}}
+                                </label>
+                                <input type="text" name="text" id="text"
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
+                                    [ngClass]="{'border-red-500': registerForm.get('phoneNumber')?.invalid && registerForm.get('phoneNumber')?.touched}"
+                                    required formControlName="phoneNumber"/>
+                                @if (registerForm.get('phoneNumber')?.invalid && registerForm.get('phoneNumber')?.touched) {
+                                    <div class="text-red-500 text-sm mt-1">
+                                        @if (registerForm.get('phoneNumber')?.errors?.['required']) {
+                                            <span>{{"address.validation.phone_required" | translate}}</span>
+                                        }
+                                        @if (registerForm.get('phoneNumber')?.errors?.['pattern']) {
+                                            <span>{{"address.validation.phone_pattern" | translate}}</span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-group">
+                                <label for="city" class="block text-sm font-medium text-gray-700 mb-1">
+                                    {{"address.city" | translate}}
+                                </label>
+                                <input type="text" name="city" id="city"
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
+                                    [ngClass]="{'border-red-500': registerForm.get('City')?.invalid && registerForm.get('City')?.touched}"
+                                    required formControlName="City" />
+                                @if (registerForm.get('City')?.invalid && registerForm.get('City')?.touched) {
+                                    <div class="text-red-500 text-sm mt-1">
+                                        @if (registerForm.get('City')?.errors?.['required']) {
+                                            <span>{{"address.validation.city_required" | translate}}</span>
+                                        }
+                                        @if (registerForm.get('City')?.errors?.['minlength']) {
+                                            <span>{{"address.validation.city_min_length" | translate}}</span>
+                                        }
+                                        @if (registerForm.get('City')?.errors?.['pattern']) {
+                                            <span>{{"address.validation.city_pattern" | translate}}</span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <button type="submit"
+                            [disabled]="registerForm.invalid"
+                            class="w-full bg-[#8B5CF6] text-white py-3 rounded-lg font-medium hover:bg-[#7C4DF6] transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                            {{"address.add address" | translate}}
+                        </button>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+}

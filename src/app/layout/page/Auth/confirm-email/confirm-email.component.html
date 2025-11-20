@@ -1,0 +1,20 @@
+<div class="confirmation-container">
+    <div class="confirmation-card">
+        @if (isConfirmed) {
+            <h2 class="success">✅ Email Confirmed</h2>
+        }
+        @if (!isConfirmed) {
+            <h2 class="error">❌ Email Confirmation Failed</h2>
+        }
+  
+      <p>{{ confirmationMessage }}</p>
+  
+      @if (isLoading) {
+        <div class="loading-spinner"></div>
+      }
+      @if (isConfirmed) {
+        <a href="/login" class="login-btn">Go to Login</a>
+      }
+    </div>
+  </div>
+  

@@ -1,0 +1,67 @@
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
+        <div class="text-center">
+            <img class="mx-auto h-24 w-auto animate-bounce" src="../../../../../assets/images/oH7tAU7.svg" alt="Logo">
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900" style="color: #8B5CF6;">
+                {{"Auth.login now" | translate}}
+            </h2>
+        </div>
+
+        <form class="mt-8 space-y-6" [formGroup]="LoginForm" (ngSubmit)="LoginSubmit()">
+            <div class="rounded-md shadow-sm -space-y-px">
+                <div class="mb-6">
+                    <label for="email" class="block text-sm font-medium" style="color: #8B5CF6;">
+                        {{"Auth.email" | translate}}
+                    </label>
+                    <input type="email" id="email" formControlName="email"
+                        class="appearance-none rounded-xl relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        placeholder="example@example.com" />
+                    
+                    @if (LoginForm.get("email")?.errors && LoginForm.get("email")?.touched) {
+                        @if (LoginForm.get("email")?.getError("required") && LoginForm.get("email")?.dirty) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-100 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.Email is Required" | translate}}</span>
+                            </div>
+                        } @else if (LoginForm.get("email")?.getError("email")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-100 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.The email must have email signature" | translate}}</span>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <div class="mb-6">
+                    <label for="password" class="block text-sm font-medium" style="color: #8B5CF6;">
+                        {{"Auth.password" | translate}}
+                    </label>
+                    <input type="password" id="password" formControlName="password"
+                        class="appearance-none rounded-xl relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" />
+                    
+                    @if (LoginForm.get("password")?.errors && LoginForm.get("password")?.touched) {
+                        @if (LoginForm.get("password")?.getError("required") && LoginForm.get("password")?.dirty) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-100 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.password is Required" | translate}}</span>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <div class="text-sm">
+                    <a routerLink="/ForgetPassword" class="font-medium hover:text-purple-500 transition-colors duration-200" style="color: #8B5CF6;">
+                        {{"Auth.forgot your password!" | translate}}
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <button [disabled]="isLoading || LoginForm.invalid" type="submit"
+                    class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-xl text-white hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors duration-200"
+                    style="background-color: #FACC15;">
+                    {{"Auth.login" | translate}}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

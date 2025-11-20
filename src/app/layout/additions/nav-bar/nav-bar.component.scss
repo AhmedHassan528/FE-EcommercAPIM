@@ -1,0 +1,140 @@
+.nav-link {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, #4ade80, #3b82f6);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+
+    &:hover::before {
+        opacity: 0.1;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: 0.5s;
+    }
+
+    &:hover::after {
+        left: 100%;
+    }
+}
+
+.active-link {
+    background-color: #8B5CF6 !important;
+    color: #fff !important;
+    font-weight: 600;
+    box-shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.3);
+}
+
+.bg-green-500 {
+    background-color: #8B5CF6 !important;
+}
+
+fa-icon {
+    color: #8B5CF6;
+    transition: all 0.3s ease;
+
+    &:hover {
+        color: #FACC15;
+        transform: scale(1.2) rotate(5deg);
+    }
+}
+
+.z-10 {
+    background-color: #fff !important;
+    border: 2px solid #8B5CF6;
+
+    a:hover {
+        background-color: #FACC15 !important;
+        color: #8B5CF6 !important;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.animate-bounce {
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4);
+    }
+
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 0 0 10px rgba(74, 222, 128, 0);
+    }
+}
+
+.animate-pulse {
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes navFloat {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.animate-float {
+    animation: navFloat 2s ease-in-out infinite;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#navbar-default {
+    animation: slideDown 0.3s ease-out;
+}
+
+.border-gradient-to-r {
+    border-image: linear-gradient(to right, #4ade80, #3b82f6) 1;
+}
+
+

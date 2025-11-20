@@ -1,0 +1,161 @@
+@if (succeed == true) {
+    <app-succeed [SucceedMesg]="'Thank You!'"></app-succeed>
+}
+@if (succeed != false) {
+    <app-error [servError]="servError"></app-error>
+}
+
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl w-full space-y-8 bg-white p-8 rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
+        <div class="text-center">
+            <img class="mx-auto h-24 w-auto animate-bounce" src="../../../../../assets/images/oH7tAU7.svg" alt="Logo">
+            <h2 class="mt-6 text-center text-3xl font-extrabold" style="color: #8B5CF6;">
+                {{"Auth.register now" | translate}}
+            </h2>
+        </div>
+
+        <form class="mt-8 space-y-6" [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Username Field -->
+                <div>
+                    <label for="username" class="block text-sm font-medium" style="color: #8B5CF6;">
+                        {{"Auth.name" | translate}}
+                    </label>
+                    <input type="text" id="username" formControlName="UserName"
+                        class="appearance-none rounded-xl relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent mt-1"
+                        required />
+                    @if (registerForm.get("UserName")?.errors && registerForm.get("UserName")?.touched) {
+                        @if (registerForm.get("UserName")?.getError("required")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.Name is Required" | translate}}</span>
+                            </div>
+                        } @else if (registerForm.get("UserName")?.getError("maxlength")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.The Name must have a maximum of 20 character" | translate}}</span>
+                            </div>
+                        } @else if (registerForm.get("UserName")?.getError("minlength")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.The Name must have a minmum of 3 character" | translate}}</span>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <!-- First Name Field -->
+                <div>
+                    <label for="firstname" class="block text-sm font-medium" style="color: #8B5CF6;">
+                        {{"Auth.FirstName" | translate}}
+                    </label>
+                    <input type="text" id="firstname" formControlName="FirstName"
+                        class="appearance-none rounded-xl relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent mt-1"
+                        required />
+                    @if (registerForm.get("FirstName")?.errors && registerForm.get("FirstName")?.touched) {
+                        @if (registerForm.get("FirstName")?.getError("required")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.Name is Required" | translate}}</span>
+                            </div>
+                        } @else if (registerForm.get("FirstName")?.getError("maxlength")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.The Name must have a maximum of 20 character" | translate}}</span>
+                            </div>
+                        } @else if (registerForm.get("FirstName")?.getError("minlength")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.The Name must have a minmum of 3 character" | translate}}</span>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <!-- Last Name Field -->
+                <div>
+                    <label for="lastname" class="block text-sm font-medium" style="color: #8B5CF6;">
+                        {{"Auth.LastName" | translate}}
+                    </label>
+                    <input type="text" id="lastname" formControlName="LastName"
+                        class="appearance-none rounded-xl relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent mt-1"
+                        required />
+                    @if (registerForm.get("LastName")?.errors && registerForm.get("LastName")?.touched) {
+                        @if (registerForm.get("LastName")?.getError("required")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.Name is Required" | translate}}</span>
+                            </div>
+                        } @else if (registerForm.get("LastName")?.getError("maxlength")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.The Name must have a maximum of 20 character" | translate}}</span>
+                            </div>
+                        } @else if (registerForm.get("LastName")?.getError("minlength")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.The Name must have a minmum of 3 character" | translate}}</span>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-sm font-medium" style="color: #8B5CF6;">
+                        {{"Auth.email" | translate}}
+                    </label>
+                    <input type="email" id="email" formControlName="Email"
+                        class="appearance-none rounded-xl relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent mt-1"
+                        placeholder="example@example.com" required />
+                    @if (registerForm.get("Email")?.errors && registerForm.get("Email")?.touched) {
+                        @if (registerForm.get("Email")?.getError("required")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.Email is Required" | translate}}</span>
+                            </div>
+                        } @else if (registerForm.get("Email")?.getError("email")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.The email must have email signature" | translate}}</span>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <!-- Password Field -->
+                <div>
+                    <label for="password" class="block text-sm font-medium" style="color: #8B5CF6;">
+                        {{"Auth.password" | translate}}
+                    </label>
+                    <input type="password" id="password" formControlName="Password"
+                        class="appearance-none rounded-xl relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent mt-1"
+                        required />
+                    @if (registerForm.get("Password")?.errors && registerForm.get("Password")?.touched) {
+                        @if (registerForm.get("Password")?.getError("required")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.password is Required" | translate}}</span>
+                            </div>
+                        } @else if (registerForm.get("Password")?.getError("pattern")) {
+                            <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                                <span>{{"Auth.The password is InValid" | translate}}</span>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <!-- Confirm Password Field -->
+                <div>
+                    <label for="rePassword" class="block text-sm font-medium" style="color: #8B5CF6;">
+                        {{"Auth.repassword" | translate}}
+                    </label>
+                    <input type="password" id="rePassword" formControlName="rePassword"
+                        class="appearance-none rounded-xl relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent mt-1"
+                        required />
+                    @if (registerForm.getError('mismatch') && registerForm.get('rePassword')?.touched) {
+                        <div class="mt-2 text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">
+                            <span>{{"Auth.rePassword Not match with password" | translate}}</span>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-8">
+                <button [disabled]="isLoading || registerForm.invalid" type="submit"
+                    class="w-full md:w-1/2 flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-xl text-white hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors duration-200"
+                    style="background-color: #FACC15;">
+                    {{"Auth.register" | translate}}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

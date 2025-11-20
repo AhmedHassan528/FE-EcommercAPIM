@@ -1,0 +1,209 @@
+<nav class="border-gray-200 dark:bg-gray-900">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="../../../../assets/images/oH7tAU7.svg" class="h-24 w-auto" />
+        </a>
+        <button data-collapse-toggle="navbar-default" type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-[#8B5CF6] rounded-lg lg:hidden hover:bg-[#FACC15] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
+            aria-controls="navbar-default" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+        </button>
+        <div class="hidden w-full lg:block lg:w-auto" id="navbar-default">
+            <ul class="font-medium flex flex-col p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg lg:flex-row lg:space-x-3 rtl:space-x-reverse lg:mt-0 lg:border-0">
+                <li>
+                    <a routerLink="home" routerLinkActive="active-link" aria-current="page"
+                        class="nav-link block py-2 px-4 text-[#8B5CF6] rounded-lg transition-all duration-300 hover:bg-[#FACC15] hover:text-white hover:shadow-md active:scale-95">
+                        <fa-icon class="lg:hidden" [icon]="faHouse"></fa-icon>
+                        {{"navBar.home" | translate}}
+                    </a>
+                </li>
+                <li class="md:hidden">
+                    <a routerLink="cart" routerLinkActive="active-link"
+                        class="nav-link block py-2 px-4 text-gray-900 rounded-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-green-100 hover:to-blue-100 hover:shadow-md active:scale-95 hover:animate-pulse">
+                        <fa-icon class="lg:hidden" [icon]="faCartShopping"></fa-icon>
+                        {{"navBar.cart" | translate}}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="address" routerLinkActive="active-link"
+                        class="nav-link block py-2 px-4 text-gray-900 rounded-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-green-100 hover:to-blue-100 hover:shadow-md active:scale-95 hover:animate-pulse">
+                        <fa-icon class="lg:hidden" [icon]="faAddressBook"></fa-icon>
+                        {{"navBar.address" | translate}}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="products" routerLinkActive="active-link"
+                        class="nav-link block py-2 px-4 text-gray-900 rounded-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-green-100 hover:to-blue-100 hover:shadow-md active:scale-95 hover:animate-pulse">
+                        {{"navBar.products" | translate}}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="categories" routerLinkActive="active-link"
+                        class="nav-link block py-2 px-4 text-gray-900 rounded-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-green-100 hover:to-blue-100 hover:shadow-md active:scale-95 hover:animate-pulse">
+                        <fa-icon class="lg:hidden" [icon]="faLayerGroup"></fa-icon>
+                        {{"navBar.categories" | translate}}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="brands" routerLinkActive="active-link"
+                        class="nav-link block py-2 px-4 text-gray-900 rounded-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-green-100 hover:to-blue-100 hover:shadow-md active:scale-95 hover:animate-pulse">
+                        <fa-icon class="lg:hidden" [icon]="faStore"></fa-icon>
+                        {{"navBar.brands" | translate}}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="withList" routerLinkActive="active-link"
+                        class="nav-link block py-2 px-4 text-gray-900 rounded-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-green-100 hover:to-blue-100 hover:shadow-md active:scale-95 hover:animate-pulse">
+                        <fa-icon class="lg:hidden" [icon]="faHeart"></fa-icon>
+                        {{"navBar.wishlist" | translate}}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="orderHistory" routerLinkActive="active-link"
+                        class="nav-link block py-2 px-4 text-gray-900 rounded-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-green-100 hover:to-blue-100 hover:shadow-md active:scale-95 hover:animate-pulse">
+                        <fa-icon class="lg:hidden" [icon]="faBagShopping"></fa-icon>
+                        {{"navBar.orderHistory" | translate}}
+                    </a>
+                </li>
+
+                @if (Logged) {
+                <li class="lg:hidden">
+                    <button (click)="SighOut()"
+                        class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 md:hover:text-green-700 lg:p-0 dark:text-white lg:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent">{{"navBar.signout"
+                        | translate}}</button>
+                </li>
+                }@else {
+                <li class="lg:hidden">
+                    <a routerLink="login" routerLinkActive="active-link"
+                        class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 md:hover:text-green-700 lg:p-0 dark:text-white lg:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent">{{"navBar.login"
+                        | translate}}</a>
+                </li>
+                <li class="lg:hidden">
+                    <a routerLink="register" routerLinkActive="active-link"
+                        class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 md:hover:text-green-700 lg:p-0 dark:text-white lg:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent">{{"navBar.register"
+                        | translate}}</a>
+                </li>
+                }
+
+                <li class="lg:hidden mt-3">
+                    <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName2"
+                        class="flex items-center text-sm pe-1 font-medium text-gray-900 rounded-full hover:text-blue-600 dark:hover:text-blue-500 md:me-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white"
+                        type="button">
+                        {{"navBar.langName"
+                        | translate}}
+                        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown menu -->
+                    <div id="dropdownAvatarName2"
+                        class="z-10 hidden  divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
+
+                            <li>
+                                <a (click)="change('ar')"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ar</a>
+                            </li>
+                            <li>
+                                <a (click)="change('en')"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">En</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="hidden w-full lg:block lg:w-auto">
+            <ul
+                class="font-medium flex flex-col p-2 md:p-0 mx-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+
+                <li>
+
+                    <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName"
+                        class="flex items-center text-sm pe-1 font-medium text-gray-900 rounded-full hover:text-blue-600 dark:hover:text-blue-500 md:me-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white"
+                        type="button">
+                        {{"navBar.lang"
+                        | translate}}
+                        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown menu -->
+                    <div id="dropdownAvatarName"
+                        class="z-10 hidden  divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
+
+                            <li>
+                                <a (click)="change('ar')"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ar</a>
+                            </li>
+                            <li>
+                                <a (click)="change('en')"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">En</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+
+                <li>
+                    <a><fa-icon [icon]="faFacbook"></fa-icon></a>
+                </li>
+                <li>
+                    <a><fa-icon [icon]="faInstagram"></fa-icon></a>
+                </li>
+                <li>
+                    <a><fa-icon [icon]="faTiktok"></fa-icon></a>
+                </li>
+                <li>
+                    <a routerLink="cart" class="relative group">
+                        <fa-icon size="2xl" [icon]="faCartShopping" class="transform group-hover:scale-110 transition-transform duration-300"></fa-icon>
+                        @if (CartCount > 0) {
+                        <span class="absolute -top-2 -right-2 bg-green-500 text-white text-xs font-medium px-2 py-1 rounded-full animate-bounce">
+                            {{CartCount}}
+                        </span>
+                        }
+                    </a>
+                </li>
+
+                @if (Logged) {
+                <li>
+                    <button (click)="SighOut()"
+                        class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{"navBar.signout"
+                        | translate}}</button>
+                </li>
+                }@else {
+                <li>
+                    <a routerLink="login" routerLinkActive="active-link"
+                        class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{"navBar.login"
+                        | translate}}</a>
+                </li>
+                <li>
+                    ||
+                <li>
+                    <a routerLink="register" routerLinkActive="active-link"
+                        class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{"navBar.register"
+                        | translate}}</a>
+                </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+</nav>
