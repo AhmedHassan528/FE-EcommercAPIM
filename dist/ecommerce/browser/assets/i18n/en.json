@@ -1,0 +1,287 @@
+{
+    "navBar": {
+        "home": "Home",
+        "cart": "Cart",
+        "address": "Address",
+        "products": "Products",
+        "categories": "Categories",
+        "brands": "Brands",
+        "wishlist": "Wishlist",
+        "signout": "Sign Out",
+        "login": "Login",
+        "register": "Register",
+        "lang": "EN",
+        "langName" : "Choose Language",
+        "orderHistory" : "Orders History"
+    },
+    "product": {
+        "add to cart": "Add to Cart",
+        "egp": "EGP",
+        "no products found": "No Products Found",
+        "brand": "Brand",
+        "category": "Category"
+    },
+    "cart": {
+        "shopping cart": "Shopping Cart",
+        "subtotal": "Subtotal",
+        "Do You want to clear all cart !!!" : "Do You want to clear all cart !!!",
+        "ehipping taxes, 14% egypt tax": "Shipping taxes, 14% Egypt tax",
+        "continue shopping": "Continue Shopping",
+        "You didn't Add Anything To Cart !!": "You didn't Add Anything To Cart !!",
+        "checkout": "Checkout",
+        "Shopping Now": "Shopping Now"
+    },
+    "address": {
+        "You didn't Add the Address !!": "You didn't Add the Address !!",
+        "create new address": "Create New Address",
+        "your name": "Your Name",
+        "your details": "Your Details",
+        "your phone number": "Your Phone Number",
+        "your city": "Your City",
+        "name": "Name",
+        "phone": "Phone",
+        "city": "City",
+        "details": "Details",
+        "delete": "Delete",
+        "add address": "Add Address",
+        "use this address": "Use This Address",
+        "Close modal": "Close Modal",
+        "Add New Address": "Add New Address",
+        "validation": {
+            "name_required": "Name is required",
+            "name_min_length": "Name must be at least 3 characters",
+            "name_pattern": "Name can only contain letters and spaces",
+            "address_required": "Address is required",
+            "address_min_length": "Address must be at least 5 characters",
+            "phone_required": "Phone number is required",
+            "phone_pattern": "Phone number must be 10-15 digits",
+            "city_required": "City is required",
+            "city_min_length": "City must be at least 2 characters",
+            "city_pattern": "City can only contain letters and spaces"
+        }
+    },
+    "wishlist": {
+        "wishlist": "Wishlist",
+        "You didn't Add Anything To Wishlist !!": "You didn't Add Anything To Wishlist !!",
+        "View details": "View Details",
+        "remove item": "Remove Item",
+        "your product": "YOUR PRODUCTS",
+        "title": "TITLE",
+        "price": "PRICE",
+        "more options": "MORE OPTIONS",
+        "items": "Items"
+    },
+    "general": {
+        "search products": "Search Products",
+        "all categories": "All Categories",
+        "all brands": "All Brands",
+        "products of Brands": "products of Brands",
+        "no products found": "No Products Found"
+    },
+    "Auth": {
+        "register now": "Register Now",
+        "name": "Name",
+        "Name is Required": "Name is Required",
+        "The Name must have a maximum of 20 character": "The Name must have a maximum of 20 character",
+        "The Name must have a minmum of 3 character": "The Name must have a minmum of 3 character",
+        "Email is Required": "Email is Required",
+        "The email must have email signature": "The email must have email signature",
+        "email": "Email",
+        "password": "Password",
+        "password is Required": "password is Required",
+        "The password is InValid": "The password is InValid",
+        "repassword": "rePassword",
+        "rePassword Not match with password": "rePassword Not match with password",
+        "phone": "Phone",
+        "phone is Required": "phone is Required",
+        "register": "Register",
+        "login now": "Login Now",
+        "login": "Login",
+        "forgot your password!": "Forgot Your Password!",
+        "Reset Password": "Reset Password",
+        "Send Reset Code": "Send Reset Code",
+        "Reset Code": "Reset Code",
+        "Enter your Reset Code": "Enter your Reset Code",
+        "confirme": "Confirme",
+        "Success": "Success",
+        "Error": "Error",
+        "Please check your email for the reset code": "Please check your email for the reset code",
+        "We have sent a password reset link to your email address": "We have sent a password reset link to your email address",
+        "Please check your inbox and follow the instructions": "Please check your inbox and follow the instructions",
+        "New Password": "New Password",
+        "Confirm Password": "Confirm Password",
+        "FirstName": "First Name",
+        "LastName": "Last Name"
+    },
+    "Footer": {
+        "Get The ToyTrove App": "Get The ToyTrove App",
+        "We Will Send You a Link, Open it on Your Phone to download the app": "We Will Send You a Link, Open it on Your Phone to download the app",
+        "Share App Link": "Share App Link",
+        "Payment partners": "Payment partners",
+        "Get Deliveries with ToyTrove": "Get Deliveries with ToyTrove",
+        "Make Every Day Special with ToyTrove Gifts": "Make Every Day Special with ToyTrove Gifts"
+    },
+    "AllOrder":{
+        "Order History" : "Order History",
+        "All Order" : "All Order",
+        "Order" : "Order",
+        "Order Payment" : "Order Payment",
+        "Qty" : "Qty",
+        "Price" : "Price",
+        "Delivery Expected by" : "Delivery Expected by",
+        "Shipping To" : "Shipping To",
+        "Payment Is Succesfull Paid" : "Payment Is Succesfull Paid",
+        "Payment Is Not Paid" : "Payment Is Not Paid",
+        "Total Price" : "Total Price",
+        "Delivered" : "Delivered",
+        "Not Delivered" : "Not Delivered",
+        "Pending" : "Pending",
+        "Received" : "Received",
+        "Canceled" : "Canceled"
+    },
+    "admin": {
+        "dashboard": {
+            "title": "Dashboard",
+            "totalOrders": "Total Orders",
+            "categories": "Categories",
+            "brands": "Brands"
+        },
+        "categories": {
+            "title": "Categories",
+            "createCategory": "Create Category",
+            "table": {
+                "id": "ID",
+                "name": "Name",
+                "image": "Image",
+                "actions": "Actions"
+            },
+            "actions": {
+                "edit": "Edit",
+                "delete": "Delete"
+            },
+            "modal": {
+                "createTitle": "Create Category",
+                "editTitle": "Edit Category"
+            },
+            "form": {
+                "name": "Name",
+                "image": "Category Image",
+                "imageRequired": "An image is required for the category",
+                "cancel": "Cancel",
+                "create": "Create",
+                "update": "Update"
+            },
+            "validation": {
+                "nameRequired": "Name is required and cannot exceed 50 characters"
+            }
+        },
+        "brands": {
+            "title": "Brands",
+            "createBrand": "Create Brand",
+            "table": {
+                "id": "ID",
+                "name": "Name",
+                "image": "Image",
+                "actions": "Actions"
+            },
+            "actions": {
+                "edit": "Edit",
+                "delete": "Delete"
+            },
+            "modal": {
+                "createTitle": "Create Brand",
+                "editTitle": "Edit Brand"
+            },
+            "form": {
+                "name": "Name",
+                "image": "Brand Image",
+                "imageRequired": "An image is required for the brand",
+                "cancel": "Cancel",
+                "create": "Create",
+                "update": "Update"
+            },
+            "validation": {
+                "nameRequired": "Name is required and cannot exceed 100 characters"
+            }
+        },
+        "products": {
+            "title": "Products",
+            "createProduct": "Create Product",
+            "searchPlaceholder": "Search by product title...",
+            "table": {
+                "id": "ID",
+                "title": "Title",
+                "description": "Description",
+                "price": "Price",
+                "numSold": "Num Sold",
+                "ratings": "Ratings",
+                "viewCount": "View Count",
+                "category": "Category",
+                "brand": "Brand",
+                "actions": "Actions"
+            },
+            "actions": {
+                "edit": "Edit",
+                "delete": "Delete"
+            },
+            "modal": {
+                "createTitle": "Create Product",
+                "editTitle": "Edit Product"
+            },
+            "form": {
+                "title": "Title",
+                "description": "Description",
+                "price": "Price",
+                "numSold": "Number Sold",
+                "ratingsQuantity": "Ratings Quantity",
+                "category": "Category",
+                "brand": "Brand",
+                "selectCategory": "Select a category",
+                "selectBrand": "Select a brand",
+                "coverImage": "Cover Image",
+                "additionalImages": "Additional Images",
+                "imageRequired": "At least one image is required",
+                "optionalImages": "Optional - you can upload multiple images",
+                "cancel": "Cancel",
+                "create": "Create",
+                "update": "Update"
+            },
+            "validation": {
+                "titleRequired": "Title is required and cannot exceed 50 characters",
+                "descriptionRequired": "Description is required and cannot exceed 500 characters",
+                "priceRequired": "Price is required and must be greater than 0",
+                "numSoldRequired": "Number sold is required and must be greater than 0",
+                "ratingsQuantityRequired": "Ratings quantity is required and must be greater than 0"
+            }
+        },
+        "users": {
+            "title": "Users",
+            "searchPlaceholder": "Search by name, email or phone...",
+            "noUsers": "No users found",
+            "error": "Failed to load users",
+            "filter": {
+                "allRoles": "All Roles",
+                "admin": "Admin",
+                "user": "User"
+            },
+            "table": {
+                "id": "ID",
+                "firstName": "First Name",
+                "lastName": "Last Name",
+                "email": "Email",
+                "phone": "Phone Number",
+                "roles": "Roles"
+            }
+        },
+        "makeAdmin": {
+            "title": "Make User Admin",
+            "userEmail": "User Email",
+            "emailPlaceholder": "Enter user email",
+            "emailRequired": "Email is required",
+            "invalidEmail": "Please enter a valid email",
+            "makeAdmin": "Make Admin",
+            "success": "User has been made admin successfully",
+            "error": "Failed to make user admin"
+        }
+    }
+}
