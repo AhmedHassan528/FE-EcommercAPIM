@@ -1,19 +1,18 @@
-import { Component, ElementRef, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild,  } from '@angular/core';
 import { BrandsService } from '../../../core/services/BrandsServices/brands.service';
 import { IBrands } from '../../../core/Interfaces/ibrands';
 import { ItemService } from '../../../core/services/Items-Service/item.service';
 import { IProduct } from '../../../core/Interfaces/product';
 import { TranslateModule } from '@ngx-translate/core';
-import { ProductCardComponent } from "../../global/product-card/product-card.component";
 import { WishListService } from '../../../core/services/WishListServices/wish-list.service';
 
 @Component({
   selector: 'app-brands',
-  imports: [TranslateModule, ProductCardComponent],
+  imports: [TranslateModule],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.scss'
 })
-export class BrandsComponent implements OnInit, OnDestroy {
+export class BrandsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild('product', { static: false }) productElement!: ElementRef;
   WishListIDs!: any
@@ -22,7 +21,7 @@ export class BrandsComponent implements OnInit, OnDestroy {
 
   // Servier Message
   ServMessage!: string;
-  succeed!: Boolean | null;
+  succeed!: boolean | null;
 
 
   // Variables
@@ -39,7 +38,7 @@ export class BrandsComponent implements OnInit, OnDestroy {
 
 
   // constructor
-  constructor(private _brandsService: BrandsService, private _itemService: ItemService, private _wishListService: WishListService) { }
+  constructor(private readonly _brandsService: BrandsService, private readonly _itemService: ItemService, private readonly _wishListService: WishListService) { }
 
 
 

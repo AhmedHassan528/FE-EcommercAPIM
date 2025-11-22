@@ -45,16 +45,3 @@ img {
   animation: pulse 1.5s infinite ease-in-out;
 }
 
-/* Make layout full responsive */
-.container {
-  width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-/* Prevent horizontal scroll on mobile */
-* {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-/* Make navbar sticky only on mobile */

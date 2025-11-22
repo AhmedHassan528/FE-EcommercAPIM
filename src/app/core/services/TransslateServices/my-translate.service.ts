@@ -26,11 +26,14 @@ private readonly _rendererFactory2 = inject(RendererFactory2).createRenderer(nul
   setLang(): void {
     if (typeof localStorage !== 'undefined' && isPlatformBrowser(this._PLATFORM_ID)) {
 
-      let savedLang = localStorage.getItem('lang'!);
+      let savedLang = localStorage.getItem('lang');
 
-      if (savedLang !== null) {
-        this._translateService.use(savedLang!);
+      if (!savedLang) {
+        savedLang = 'en';
+        localStorage.setItem('lang', savedLang);
       }
+
+      this._translateService.use(savedLang);
 
       if (savedLang === 'en') {
 
