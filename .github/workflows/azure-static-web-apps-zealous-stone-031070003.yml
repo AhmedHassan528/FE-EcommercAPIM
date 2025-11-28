@@ -17,16 +17,20 @@ jobs:
     permissions:
        id-token: write
        contents: read
+
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: true
+          lfs: false
 
-      # 1️⃣ Install Node 20 (Required by Angular 20)
+      # 1️⃣ Use Node 20 for Angular 20 CSR
       - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      # 2️⃣ Install packages
+      # 2️⃣ Install dependencies
       - name: Install dependencies
         run: npm install
 
@@ -34,16 +38,36 @@ jobs:
       - name: Build Angular App
         run: npm run build
 
-      # 4️⃣ Deploy to Azure Static Web App
+      # 4️⃣ Install OIDC client (your original step)
+      - name: Install OIDC Client from Core Package
+        run: npm install @actions/core@1.6.0 @actions/http-client
+
+      # 5️⃣ Get id token (your original step)
+      - name: Get Id Token
+        uses: actions/github-script@v6
+        id: idtoken
+        with:
+           script: |
+               const coredemo = require('@actions/core')
+               return await coredemo.getIDToken()
+           result-encoding: string
+
+      # 6️⃣ Deploy (using your original API KEY)
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ZEALOUS_STONE_031070003 }}
           action: "upload"
+
+          # Your original config
           app_location: "/"
+          api_location: ""
           output_location: "dist/ecommerce/browser"
-          skip_app_build: true  # مهم!! لأننا بنينا يدويًا
+
+          # Prevent Oryx from rebuilding using Node 18 ❗
+          skip_app_build: true
+
           github_id_token: ${{ steps.idtoken.outputs.result }}
 
   close_pull_request_job:
