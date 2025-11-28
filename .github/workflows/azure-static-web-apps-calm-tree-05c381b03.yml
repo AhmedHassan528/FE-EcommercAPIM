@@ -16,29 +16,27 @@ jobs:
     name: Deploy Only (Skip Build)
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: false
+          lfs: false
 
+      # 👇 اهم تعديل: no build → skip app build
       - name: Deploy to Azure Static Web App
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_CALM_TREE_05C381B03 }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_DELIGHTFUL_MOSS_07B0D130F }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-
-          # 👇 أهم حاجة.. لازم يكون موجود
-          skip_app_build: true
-
-          # 👇 ده فولدر البناء النهائي اللي انت بتبنيه locally
+          skip_app_build: true  # 👈 ده أهم حاجة
           app_location: "dist/ecommerce/browser"
           api_location: ""
-          output_location: ""   # مهم يكون فاضي مع skip_app_build
+          output_location: ""   # مش محتاجه لأننا مش بنبني
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
-    name: Close Pull Request Job
     steps:
-      - name: Close Pull Request
-        uses: Azure/static-web-apps-deploy@v1
+      - uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_CALM_TREE_05C381B03 }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_DELIGHTFUL_MOSS_07B0D130F }}
           action: "close"
