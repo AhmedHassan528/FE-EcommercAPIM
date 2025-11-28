@@ -14,70 +14,25 @@ export class OrdersService {
 
 
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) { }
 
 
   getOrders(): Observable<any> {
-    return this._http.get(`${RouteUrl}/api/Order/GetUserOrders`).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    return this._http.get(`${RouteUrl}/api/Order/GetUserOrders`)
   }
   getOrdersDetails(id: number): Observable<any> {
-    return this._http.get(`${RouteUrl}/api/Order/${id}`).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    return this._http.get(`${RouteUrl}/api/Order/${id}`)
   }
   updateOrderStatus(id: number, status: string): Observable<any> {
-    return this._http.put(`${RouteUrl}/api/Order/updateOrderStatus/${id}/${status}`, null).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    return this._http.put(`${RouteUrl}/api/Order/updateOrderStatus/${id}/${status}`, null)
   }
 
   getAllUserOrders(): Observable<any> {
-    return this._http.get(`${RouteUrl}/api/Order/AdminGetAllOrdersl`).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    return this._http.get(`${RouteUrl}/api/Order/AdminGetAllOrdersl`)
   }
 
   verifySession(id: string): Observable<any> {
-    return this._http.get(`${RouteUrl}/api/Order/verify-session/${id}`).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    return this._http.get(`${RouteUrl}/api/Order/verify-session/${id}`)
   }
 
 

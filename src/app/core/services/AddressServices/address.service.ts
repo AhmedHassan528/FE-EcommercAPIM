@@ -11,60 +11,24 @@ import { ToastrService } from 'ngx-toastr';
 export class AddressService {
   private readonly _toastrService = inject(ToastrService);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   AddAddress(address: any): Observable<any> {
-    return this.http.post(`${RouteUrl}/api/Address`,address
-    ).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    return this.http.post(`${RouteUrl}/api/Address`, address
+    )
   }
 
   GetAllAddresses(): Observable<any> {
-    return this.http.get(`${RouteUrl}/api/Address`).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    return this.http.get(`${RouteUrl}/api/Address`)
   }
 
-  GetSpciificAddresses(id:number): Observable<any> {
-    return this.http.get(`${RouteUrl}/api/Address/GetAddressByID/${id}`).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+  GetSpciificAddresses(id: number): Observable<any> {
+    return this.http.get(`${RouteUrl}/api/Address/GetAddressByID/${id}`)
   }
 
   DeleteSpciificAddress(id: number): Observable<any> {
     return this.http.delete(`${RouteUrl}/api/Address/${id}`
-    ).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    )
   }
 
 

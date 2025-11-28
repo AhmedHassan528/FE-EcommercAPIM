@@ -9,7 +9,7 @@ import { KMPSearchPipe } from '../../../core/Pipes/kmpsearch.pipe';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { WishListService } from '../../../core/services/WishListServices/wish-list.service';
-import { NgxSpinnerService} from 'ngx-spinner';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from '../../../core/services/Auth-Service/auth.service';
 import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -21,10 +21,10 @@ import { CartService } from '../../../core/services/CartServices/cart.service';
 
 
 @Component({
-    selector: 'app-home',
-    imports: [TranslateModule, FormsModule, CarouselModule, KMPSearchPipe, RouterLink, TranslateModule, FontAwesomeModule],
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss', '../../../app.component.scss']
+  selector: 'app-home',
+  imports: [TranslateModule, FormsModule, CarouselModule, KMPSearchPipe, RouterLink, TranslateModule, FontAwesomeModule],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss', '../../../app.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
@@ -46,19 +46,19 @@ export class HomeComponent implements OnInit, OnDestroy {
   getHomeSub!: Subscription;
 
 
-    // Font Awesome Icons
-    faStar = faStar;
-    faStarHalf = faStarHalf;
-    faSpinner = faSpinner;
-    faHeart = faHeart;
-    faShoppingCart = faShoppingCart;
-  
-    // Variables
-    wishListLoading: Boolean = false;
-    itemId!: number;
+  // Font Awesome Icons
+  faStar = faStar;
+  faStarHalf = faStarHalf;
+  faSpinner = faSpinner;
+  faHeart = faHeart;
+  faShoppingCart = faShoppingCart;
+
+  // Variables
+  wishListLoading: Boolean = false;
+  itemId!: number;
 
 
-    private readonly _toastrService = inject(ToastrService);
+  private readonly _toastrService = inject(ToastrService);
 
   constructor(
     private spinner: NgxSpinnerService,
@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private _Categories: CategoryService,
     private _wishListService: WishListService,
     private _authService: AuthService,
-    private _cartService : CartService
+    private _cartService: CartService
   ) { }
 
 
@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.spinner.show();
     this.getProducts();
     this.getCategories();
-    
+
   }
   ngAfterViewInit() {
     if (this._authService.isAuthenticated) {
@@ -161,8 +161,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       next: (res) => {
         this._cartService.cartCount.next(res.numOfCartItems);
         this._toastrService.success('Item Added to Cart', 'Success', {
-          timeOut: 5000,});
-          this.AddLoading = false
+          timeOut: 5000,
+        });
+        this.AddLoading = false
         setTimeout(() => {
           this.AddLoading = false
           this.itemId = 0
@@ -186,7 +187,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     autoplayTimeout: 4500,
     autoplayHoverPause: true,
     navText: ['', ''],
-  
+
     responsive: {
       0: {
         items: 1,
@@ -205,7 +206,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
     nav: true
   };
-  
+
 
   customOptions: OwlOptions = {
     loop: true,
@@ -218,9 +219,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     autoplay: true,
     autoplayTimeout: 4000,
     autoplayHoverPause: true,
-  
+
     navText: ['', ''],
-  
+
     responsive: {
       0: {
         items: 1,
@@ -240,8 +241,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         items: 4
       }
     },
-  
+
     nav: true
   };
-  
+
 }

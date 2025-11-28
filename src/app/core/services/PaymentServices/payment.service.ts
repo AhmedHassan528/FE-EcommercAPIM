@@ -18,47 +18,20 @@ export class PaymentService {
   }
 
   getPublishableKey(): Observable<any> {
-    return this.http.get(`${RouteUrl}/api/payment/publishable-key`).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    return this.http.get(`${RouteUrl}/api/payment/publishable-key`)
   }
 
   createPaymentIntent(amount: number): Observable<any> {
     console.log('Creating PaymentIntent with amount:', amount);
-    return this.http.post(`${RouteUrl}/api/payment/create-checkout-session`, { amount }).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    return this.http.post(`${RouteUrl}/api/payment/create-checkout-session`, { amount })
   }
 
-  createPayment(cartId: number, addressId : number): Observable<any> {
-    return this.http.post(`${RouteUrl}/api/Order/create`, { 
-      cartId, 
+  createPayment(cartId: number, addressId: number): Observable<any> {
+    return this.http.post(`${RouteUrl}/api/Order/create`, {
+      cartId,
       addressId,
-      
-     }).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+
+    })
   }
 
   async initializeStripe(): Promise<any> {

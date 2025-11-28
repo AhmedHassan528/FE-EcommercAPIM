@@ -10,6 +10,7 @@ import { ForgetPasswordComponent } from './layout/page/Auth/forget-password/forg
 import { ResetPasswordComponent } from './layout/page/Auth/reset-password/reset-password.component';
 import { logedGuard } from './core/guards/loged.guard';
 import { adminGuard } from './core/guards/admin.guard';
+import { authGuard } from './core/guards/auth.guard';
 import { ProductDetailsComponent } from './layout/additions/product-details/product-details.component';
 import { AddressesComponent } from './layout/page/addresses/addresses.component';
 import { WishListComponent } from './layout/page/wish-list/wish-list.component';
@@ -29,27 +30,27 @@ import { MakeAdminComponent } from './Admin-layout/features/user-management/make
 import { UserListComponent } from './Admin-layout/features/user-management/user-list/user-list.component';
 
 export const routes: Routes = [
-    {path: '', redirectTo: '/home', pathMatch: 'full'},
-    {path: "home", component: HomeComponent},
-    {path: "chat", component: ChatComponent},
-    {path: "Details/:id", component: ProductDetailsComponent},
-    {path: "cart", component: CartComponent },
-    {path: "withList", component: WishListComponent },
-    {path: "products", component: ProductsComponent},
-    {path: "categories", component: CategoriesComponent },
-    {path: "brands", component: BrandsComponent },
-    {path: "orderHistory", component: OrderHistoryComponent},
-    {path: "orderHistory/:session_id", component: OrderHistoryComponent},
-    {path: "address", component: AddressesComponent },
-    {path: "address/:id", component: AddressesComponent },
-    {path: "Payment", component: PaymentComponent},
-    {path: "login", component: LoginComponent},
-    {path: "ConfirmEmail", component: ConfirmEmailComponent, canActivate: [logedGuard]},
-    {path: "ForgetPassword", component: ForgetPasswordComponent, canActivate: [logedGuard]},
-    {path: "reset-password/ConfirmEmail", component: ResetPasswordComponent, canActivate: [logedGuard]},
-    {path: "register", component: RegisterComponent , canActivate: [logedGuard] },
-    {path: "not-found", component: NotFoundComponent},
-    {path: "unauthorized", component: UnauthorizedComponent},
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: "home", component: HomeComponent },
+    { path: "chat", component: ChatComponent },
+    { path: "Details/:id", component: ProductDetailsComponent },
+    { path: "cart", component: CartComponent, canActivate: [authGuard] },
+    { path: "withList", component: WishListComponent, canActivate: [authGuard] },
+    { path: "products", component: ProductsComponent },
+    { path: "categories", component: CategoriesComponent },
+    { path: "brands", component: BrandsComponent },
+    { path: "orderHistory", component: OrderHistoryComponent, canActivate: [authGuard] },
+    { path: "orderHistory/:session_id", component: OrderHistoryComponent, canActivate: [authGuard] },
+    { path: "address", component: AddressesComponent, canActivate: [authGuard] },
+    { path: "address/:id", component: AddressesComponent, canActivate: [authGuard] },
+    { path: "Payment", component: PaymentComponent, canActivate: [authGuard] },
+    { path: "login", component: LoginComponent },
+    { path: "ConfirmEmail", component: ConfirmEmailComponent, canActivate: [logedGuard] },
+    { path: "ForgetPassword", component: ForgetPasswordComponent, canActivate: [logedGuard] },
+    { path: "reset-password/ConfirmEmail", component: ResetPasswordComponent, canActivate: [logedGuard] },
+    { path: "register", component: RegisterComponent, canActivate: [logedGuard] },
+    { path: "not-found", component: NotFoundComponent },
+    { path: "unauthorized", component: UnauthorizedComponent },
     {
         path: 'admin',
         canActivate: [adminGuard],
@@ -64,5 +65,5 @@ export const routes: Routes = [
             { path: 'users', component: UserListComponent }
         ]
     },
-    {path: "**", component: HomeComponent}
+    { path: "**", component: HomeComponent }
 ];

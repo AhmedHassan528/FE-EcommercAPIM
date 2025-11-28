@@ -17,76 +17,29 @@ export class BrandsService {
   constructor(private _http: HttpClient) { }
 
   getAllBrands(): Observable<any> {
-    return this._http.get(`${RouteUrl}/api/Brand`).pipe(
-      catchError((error: HttpErrorResponse) => {
-        console.log(error.error.message);
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    return this._http.get(`${RouteUrl}/api/Brand`)
   }
 
   getBrandById(id: any): Observable<any> {
-    return this._http.get(`${RouteUrl}/api/Brand/${id}`).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    return this._http.get(`${RouteUrl}/api/Brand/${id}`)
   }
 
   createBrand(formData: FormData): Observable<HttpResponse<IBrands>> {
     return this._http.post<IBrands>(`${RouteUrl}/api/Brand`, formData, {
       observe: 'response',
-    }).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    })
   }
 
   updateBrand(id: number, formData: FormData): Observable<HttpResponse<IBrands>> {
     return this._http.put<IBrands>(`${RouteUrl}/api/Brand/${id}`, formData, {
       observe: 'response',
-    }).pipe(
-      catchError(error => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    })
   }
 
   deleteBrand(id: number): Observable<HttpResponse<any>> {
     return this._http.delete(`${RouteUrl}/api/Brand/${id}`, {
       observe: 'response',
       responseType: 'text'
-    }).pipe(
-      catchError(error => {
-        if(error.error.message != "fetch failed"){
-          this._toastrService.error(error.error.message, 'Error', {
-            timeOut: 3000,
-          });
-        }
-        return throwError(() => error);
-      })
-    );
+    })
   }
-
 }

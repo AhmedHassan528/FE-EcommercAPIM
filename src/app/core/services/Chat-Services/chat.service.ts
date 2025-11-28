@@ -1,8 +1,6 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
-import RouteUrl from '../../../BaseUrl';
-import { ToastrService } from 'ngx-toastr';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +10,7 @@ export class ChatService {
   private apiUrl = 'https://api-mang-test.azure-api.net/gpt4o-mini/openai/deployments/gpt-4o-mini/chat/completions?api-version=2025-03-01-preview';
   private subscriptionKey = 'c2bcd19706014eda83e6e1b51155097a';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   sendToAzureModel(history: any[]): Observable<any> {
     const headers = new HttpHeaders({

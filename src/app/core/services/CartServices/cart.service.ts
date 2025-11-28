@@ -15,20 +15,11 @@ export class CartService {
 
 
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) { }
 
   getCartItems(): Observable<any> {
     if (typeof localStorage !== 'undefined') {
-      return this._http.get(`${RouteUrl}/api/cart`).pipe(
-        catchError((error: HttpErrorResponse) => {
-          if(error.error.message != "fetch failed"){
-            this._toastrService.error(error.error.message, 'Error', {
-              timeOut: 3000,
-            });
-          }
-          return throwError(() => error);
-        })
-      );
+      return this._http.get(`${RouteUrl}/api/cart`)
     }
     return new Observable();
   }
@@ -38,7 +29,7 @@ export class CartService {
     return this._http.post(`${RouteUrl}/api/Cart/add/${id}`, null)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          if(error.error.message != "fetch failed"){
+          if (error.error.message != "fetch failed") {
             this._toastrService.error(error.error.message, 'Error', {
               timeOut: 3000,
             });
@@ -59,7 +50,7 @@ export class CartService {
     return this._http.delete(`${RouteUrl}/api/Cart/Remove/${id}`)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          if(error.error.message != "fetch failed"){
+          if (error.error.message != "fetch failed") {
             this._toastrService.error(error.error.message, 'Error', {
               timeOut: 3000,
             });
@@ -80,7 +71,7 @@ export class CartService {
     return this._http.delete(`${RouteUrl}/api/Cart/clear`)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          if(error.error.message != "fetch failed"){
+          if (error.error.message != "fetch failed") {
             this._toastrService.error(error.error.message, 'Error', {
               timeOut: 3000,
             });
@@ -97,7 +88,7 @@ export class CartService {
     return this._http.put(`${RouteUrl}/api/Cart/increase/${id}`, null)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          if(error.error.message != "fetch failed"){
+          if (error.error.message != "fetch failed") {
             this._toastrService.error(error.error.message, 'Error', {
               timeOut: 3000,
             });
@@ -118,7 +109,7 @@ export class CartService {
     return this._http.put(`${RouteUrl}/api/Cart/decrease/${id}`, null)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          if(error.error.message != "fetch failed"){
+          if (error.error.message != "fetch failed") {
             this._toastrService.error(error.error.message, 'Error', {
               timeOut: 3000,
             });

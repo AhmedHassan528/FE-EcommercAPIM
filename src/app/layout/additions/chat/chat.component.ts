@@ -44,7 +44,7 @@ export class ChatComponent {
     },
   ];
 
-  constructor(private chatService: ChatService, private sanitizer: DomSanitizer) {}
+  constructor(private chatService: ChatService, private sanitizer: DomSanitizer) { }
 
   private detectDir(text: string) {
     return /[\u0591-\u07FF\uFB1D-\uFDFD\uFE70-\uFEFC]/.test(text) ? 'rtl' : 'ltr';
